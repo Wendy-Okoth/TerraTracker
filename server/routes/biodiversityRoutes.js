@@ -1,10 +1,20 @@
 import express from "express";
+import {
+  getAllBiodiversity,
+  addBiodiversityData,
+  getBiodiversityById,
+  updateBiodiversityData,
+  deleteBiodiversityData,
+} from "../controllers/biodiversityController.js";
+
 const router = express.Router();
 
-// Test route
-router.get("/", (req, res) => {
-  res.json({ message: "Biodiversity routes working!" });
-});
+// 🐾 Biodiversity routes
+router.get("/", getAllBiodiversity);               // GET all biodiversity data
+router.post("/", addBiodiversityData);             // POST new biodiversity record
+router.get("/:id", getBiodiversityById);           // GET record by ID
+router.put("/:id", updateBiodiversityData);        // PUT update record
+router.delete("/:id", deleteBiodiversityData);     // DELETE record
 
 export default router;
 

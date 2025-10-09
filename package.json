@@ -1,0 +1,30 @@
+{
+  "name": "terratracker",
+  "version": "1.0.0",
+  "description": "Full TerraTracker project (frontend + backend)",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "nodemon server/server.js",
+    "client": "npm start --prefix terratracker",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test-axios": "node testAxios.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wendy-Okoth/TerraTracker.git"
+  },
+  "keywords": [],
+  "author": "Wendy Okoth",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wendy-Okoth/TerraTracker/issues"
+  },
+  "homepage": "https://github.com/Wendy-Okoth/TerraTracker#readme",
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "nodemon": "^3.1.10"
+  }
+}
+

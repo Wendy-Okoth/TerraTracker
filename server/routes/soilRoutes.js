@@ -1,10 +1,20 @@
 import express from "express";
+import {
+  getAllSoilData,
+  addSoilData,
+  getSoilById,
+  updateSoilData,
+  deleteSoilData,
+} from "../controllers/soilController.js";
+
 const router = express.Router();
 
-// Test route
-router.get("/", (req, res) => {
-  res.json({ message: "Soil routes working!" });
-});
+// 🌾 Soil routes
+router.get("/", getAllSoilData);         // GET all soil data
+router.post("/", addSoilData);           // POST new soil data
+router.get("/:id", getSoilById);         // GET single soil record by ID
+router.put("/:id", updateSoilData);      // PUT update soil record
+router.delete("/:id", deleteSoilData);   // DELETE soil record
 
 export default router;
 
