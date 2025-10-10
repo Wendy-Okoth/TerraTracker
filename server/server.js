@@ -16,20 +16,19 @@ console.log("Loaded MONGO_URI:", process.env.MONGO_URI);
 
 const app = express();
 
+// ✅ Middleware FIRST
+app.use(cors());
+app.use(express.json());
+
 // ✅ Import routes
 import soilRoutes from "./routes/soilRoutes.js";
 import climateRoutes from "./routes/climateRoutes.js";
 import biodiversityRoutes from "./routes/biodiversityRoutes.js";
 
-// ✅ Use routes
+// ✅ Use routes AFTER middleware
 app.use("/api/soil", soilRoutes);
 app.use("/api/climate", climateRoutes);
 app.use("/api/biodiversity", biodiversityRoutes);
-
-
-// Middleware
-app.use(cors());
-app.use(express.json());
 
 // Database Connection
 mongoose
@@ -42,9 +41,11 @@ app.get("/", (req, res) => {
   res.send("🌍 TerraTracker Backend Running!");
 });
 
-// Start Server
-const PORT = process.env.PORT || 5000;
 app.get("/api/ping", (req, res) => {
   res.json({ message: "TerraTracker API is live 🚀" });
 });
+
+// Start Server
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+
