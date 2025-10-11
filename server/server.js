@@ -1,6 +1,6 @@
+import "./config/env.js"; 
 import express from "express";
 import cors from "cors";
-import dotenv from "dotenv";
 import mongoose from "mongoose";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -9,10 +9,8 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Explicitly load .env from server folder
-dotenv.config({ path: path.join(__dirname, ".env") });
-
 console.log("Loaded MONGO_URI:", process.env.MONGO_URI);
+console.log("Loaded OPENAI_API_KEY:", process.env.OPENAI_API_KEY ? "✅ Loaded" : "❌ Missing");
 
 const app = express();
 
@@ -24,11 +22,13 @@ app.use(express.json());
 import soilRoutes from "./routes/soilRoutes.js";
 import climateRoutes from "./routes/climateRoutes.js";
 import biodiversityRoutes from "./routes/biodiversityRoutes.js";
+import aiRoutes from "./routes/aiRoutes.js";
 
 // ✅ Use routes AFTER middleware
 app.use("/api/soil", soilRoutes);
 app.use("/api/climate", climateRoutes);
 app.use("/api/biodiversity", biodiversityRoutes);
+app.use("/api/ai", aiRoutes);
 
 // Database Connection
 mongoose

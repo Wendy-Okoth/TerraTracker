@@ -1,4 +1,5 @@
-import SoilHealth from "../models/SoilHealth.js";
+
+import SoilData from  "../models/SoilData.js";
 
 // ✅ Get all soil data
 export const getAllSoilData = async (req, res) => {
@@ -13,7 +14,7 @@ export const getAllSoilData = async (req, res) => {
 // ✅ Add new soil record
 export const addSoilData = async (req, res) => {
   try {
-    const newSoil = new SoilHealth(req.body);
+    const newSoil = new SoilData(req.body);
     await newSoil.save();
     res.status(201).json(newSoil);
   } catch (error) {
@@ -24,7 +25,7 @@ export const addSoilData = async (req, res) => {
 // ✅ Get soil record by ID
 export const getSoilById = async (req, res) => {
   try {
-    const soil = await SoilHealth.findById(req.params.id);
+    const soil = await SoilData.findById(req.params.id);
     if (!soil) return res.status(404).json({ message: "Record not found" });
     res.status(200).json(soil);
   } catch (error) {

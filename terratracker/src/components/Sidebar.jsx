@@ -7,6 +7,8 @@ export default function Sidebar() {
     { name: "Map View", path: "/map", icon: <MapPin size={20} /> },
     { name: "Reports", path: "/reports", icon: <BarChart2 size={20} /> },
     { name: "Settings", path: "/settings", icon: <Settings size={20} /> },
+    { name: "AI Insights", path: "/ai-insights", icon: "🤖" },
+
   ];
 
   const dataSections = [

@@ -7,6 +7,7 @@ import ClimateList from "./components/ClimateList";
 import AddClimate from "./components/AddClimate";
 import SoilList from "./components/SoilList";
 import AddSoil from "./components/AddSoil";
+import AIInsights from "./pages/AIInsights";
 
 function App() {
   return (
@@ -27,6 +28,10 @@ function App() {
           {/* Soil routes */}
           <Route path="/soil" element={<SoilList />} />
           <Route path="/soil/add" element={<AddSoil />} />
+
+          {/* AI Insights route */}
+          <Route path="/ai-insights" element={<AIInsights />} />
+
         </Routes>
       </MainLayout>
     </Router>
